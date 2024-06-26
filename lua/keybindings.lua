@@ -43,30 +43,20 @@ map("t", "A-l", [[ <C-\><C-N><C-w>l ]], opt)
 
 map("n", "<C-f>", "8j", opt)
 map("n", "<C-b>", "8k", opt)
-map("n", "<A-h>", "4h", opt)
-map("n", "<A-j>", "4j", opt)
-map("n", "<A-k>", "4k", opt)
-map("n", "<A-l>", "4l", opt)
+map("n", "<A-H>", "4h", opt)
+map("n", "<A-J>", "4j", opt)
+map("n", "<A-K>", "4k", opt)
+map("n", "<A-L>", "4l", opt)
 
 map('n', '<A-m>', ':NvimTreeToggle<CR>', opt)
-local pluginKeys = {}
-pluginKeys.nvimTreeList = {
-  -- 打开文件或文件夹
-  { key = {"<CR>", "o", "<2-LeftMouse>"}, action = "edit" },
-  -- 分屏打开文件
-  { key = "v", action = "vsplit" },
-  { key = "h", action = "split" },
-  -- 显示隐藏文件
-  { key = "i", action = "toggle_custom" }, -- 对应 filters 中的 custom (node_modules)
-  { key = ".", action = "toggle_dotfiles" }, -- Hide (dotfiles)
-  -- 文件操作
-  { key = "<F5>", action = "refresh" },
-  { key = "a", action = "create" },
-  { key = "d", action = "remove" },
-  { key = "r", action = "rename" },
-  { key = "x", action = "cut" },
-  { key = "c", action = "copy" },
-  { key = "p", action = "paste" },
-  { key = "s", action = "system_open" },
-}
-return pluginKeys
+
+map('n', '<C-h>', ':BufferLineCyclePrev<CR>', opt)
+map('n', '<C-l>', ':BufferLineCycleNext<CR>', opt)
+map('n', '<C-w>', ':Bdelete!<CR>', opt)
+map('n', '<leader>bl', ':BufferLineCloseRight<CR>', opt)
+map('n', '<leader>bh', ':BufferLineCloseLeft<CR>', opt)
+map('n', '<leader>bc', ':BufferLinePickClose<CR>', opt)
+
+map('n', '<A-p>', ':Telescope find_files<CR>', opt)
+map('n', '<A-F>', ':Telescope live_grep<CR>', opt)
+
