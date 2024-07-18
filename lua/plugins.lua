@@ -1,4 +1,5 @@
 local packer = require("packer")
+
 packer.startup({
   function(use)
     -- Packer 自我管理
@@ -16,6 +17,16 @@ packer.startup({
     use({ 'williamboman/mason.nvim' })
     use({ 'williamboman/mason-lspconfig.nvim' })
     use({ 'neovim/nvim-lspconfig' })
+    -- complation
+    use({ 'hrsh7th/nvim-cmp' })
+    use({ 'hrsh7th/vim-vsnip' })
+    use({ 'hrsh7th/cmp-vsnip' })
+    use({ 'hrsh7th/cmp-nvim-lsp' })
+    use({ 'hrsh7th/cmp-buffer' })
+    use({ 'hrsh7th/cmp-path' })
+    use({ 'hrsh7th/cmp-cmdline' })
+    use({ 'rafamadriz/friendly-snippets' })
+    use({ 'github/copilot.vim' })
   end,
   config = {
     display = {

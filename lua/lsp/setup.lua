@@ -18,6 +18,7 @@ mason_lsp.setup({
     'lua_ls',
     'rust_analyzer',
     'jsonls',
+    'bashls',
   },
   automatic_installation = true,
 })
