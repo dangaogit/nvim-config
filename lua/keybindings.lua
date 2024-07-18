@@ -37,6 +37,10 @@ map("n", "<leader>l", ":vertical resize -2<CR>", opt)
 map("n", "<C-j>", ":resize -2<CR>", opt)
 map("n", "<C-k>", ":resize +2<CR>", opt)
 
+-- 文字模式
+-- 删除单词
+map('i', '<M-BS>', '<C-w>', opt)
+map('n', '<M-BS>', 'db', opt)
 -- terminal 模式
 map("n", "<leader>t", ":sp | terminal<CR>", opt)
 map("n", "<leader>vt", ":vsp | terminal<CR>", opt)
