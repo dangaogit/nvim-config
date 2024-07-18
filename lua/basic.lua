@@ -1,5 +1,25 @@
 -- 使用系统剪切板
-vim.o.clipboard="unnamed,unnamedplus"
+vim.o.clipboard = "unnamedplus"
+
+local function paste()
+  return {
+    vim.fn.split(vim.fn.getreg(""), "\n"),
+    vim.fn.getregtype(''),
+  }
+end
+
+vim.g.clipboard = {
+  name = 'OSC 52',
+  copy = {
+    ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
+    ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
+  },
+  paste = {
+    ['+'] = paste,
+    ['*'] = paste,
+  },
+
+}
 -- utf8
 vim.g.encoding = "UTF-8"
 vim.o.fileencoding = 'utf-8'
@@ -7,8 +27,8 @@ vim.o.fileencoding = 'utf-8'
 vim.o.scrolloff = 8
 vim.o.sidescrolloff = 8
 -- 使用相对行号
-vim.wo.number = true
-vim.wo.relativenumber = true
+vim.wo.number = true 
+vim.wo.relativenumber = false 
 -- 高亮所在行
 vim.wo.cursorline = true
 -- 显示左侧图标指示列
@@ -80,4 +100,3 @@ vim.o.pumheight = 10
 vim.o.showtabline = 2
 -- 使用增强状态栏插件后不再需要 vim 的模式提示
 vim.o.showmode = false
-

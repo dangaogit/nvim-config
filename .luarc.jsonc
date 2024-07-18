@@ -1,0 +1,19 @@
+{
+  "runtime": {
+    "version": "LuaJIT",
+  },
+  "workspace": {
+    "checkThirdParty": false,
+    "library": [
+      "vim.env.VIMRUNTIME",
+    ],
+  },
+  "diagnostics": {
+    "disable": [
+      "missing-global-doc",
+    ],
+    "groupFileStatus": {
+      "global": "Any",
+    },
+  },
+}

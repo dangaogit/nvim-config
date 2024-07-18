@@ -14,21 +14,21 @@ map("n", "s", "", opt)
 map("n", "-", "", opt)
 -- 分屏快捷键
 -- 竖分屏
-map("n", "sv", ":vsp<CR>", opt)
+map("n", "<leader>\\", ":vsp<CR>", opt)
 -- 横分屏
-map("n", "sh", ":sp<CR>", opt)
+map("n", "<leader>-", ":sp<CR>", opt)
 -- 关闭当前
-map("n", "sc", "<C-w>c", opt)
+map("n", "<leader>w", "<C-w>c", opt)
 -- 关闭其他
-map("n", "so", "<C-w>o", opt)
+map("n", "<leader>o", "<C-w>o", opt)
 -- Alt + hjkl 切换窗口
 map("n", "<A-h>", "<C-w>h", opt)
 map("n", "<A-j>", "<C-w>j", opt)
 map("n", "<A-k>", "<C-w>k", opt)
 map("n", "<A-l>", "<C-w>l", opt)
 -- 窗口左右比例
-map("n", "<C-h>", ":vertical resize +2<CR>", opt)
-map("n", "<C-l>", ":vertical resize -2<CR>", opt)
+map("n", "<leader>h", ":vertical resize +2<CR>", opt)
+map("n", "<leader>l", ":vertical resize -2<CR>", opt)
 -- 窗口上下比例
 map("n", "<C-j>", ":resize -2<CR>", opt)
 map("n", "<C-k>", ":resize +2<CR>", opt)
@@ -43,20 +43,47 @@ map("t", "A-l", [[ <C-\><C-N><C-w>l ]], opt)
 
 map("n", "<C-f>", "8j", opt)
 map("n", "<C-b>", "8k", opt)
-map("n", "<A-H>", "4h", opt)
-map("n", "<A-J>", "4j", opt)
-map("n", "<A-K>", "4k", opt)
-map("n", "<A-L>", "4l", opt)
+map("n", "H", "4h", opt)
+map("n", "J", "4j", opt)
+map("n", "K", "4k", opt)
+map("n", "L", "4l", opt)
 
 map('n', '<A-m>', ':NvimTreeToggle<CR>', opt)
 
 map('n', '<C-h>', ':BufferLineCyclePrev<CR>', opt)
 map('n', '<C-l>', ':BufferLineCycleNext<CR>', opt)
 map('n', '<C-w>', ':Bdelete!<CR>', opt)
-map('n', '<leader>bl', ':BufferLineCloseRight<CR>', opt)
-map('n', '<leader>bh', ':BufferLineCloseLeft<CR>', opt)
-map('n', '<leader>bc', ':BufferLinePickClose<CR>', opt)
+map('n', '<leader>cl', ':BufferLineCloseRight<CR>', opt)
+map('n', '<leader>ch', ':BufferLineCloseLeft<CR>', opt)
+map('n', '<leader>cc', ':BufferLinePickClose<CR>', opt)
 
 map('n', '<A-p>', ':Telescope find_files<CR>', opt)
 map('n', '<A-F>', ':Telescope live_grep<CR>', opt)
+
+-- lsp keys
+map('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<CR>', opt)
+map('n', '<F18>', '<cmd>lua vim.lsp.buf.rename()<CR>', opt)
+map('n', '<A-.>', '<cmd>lua vim.lsp.buf.code_action()<CR>', opt)
+map('n', '<D-.>', '<cmd>lua vim.lsp.buf.code_action()<CR>', opt)
+map('n', '<leader>.', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opt)
+map('n', '<leader>b', '<cmd>lua vim.lsp.buf.definition()<CR>', opt)
+map('n', '<leader>B', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opt)
+map('n', '<leader>I', '<cmd>lua vim.lsp.buf.declaration()<CR>', opt)
+map('n', '<leader>i', '<cmd>lua vim.lsp.buf.implementation()<CR>', opt)
+map('n', '<leader>r', '<cmd>lua vim.lsp.buf.references()<CR>', opt)
+map('n', '<leader>?', '<cmd>lua vim.lsp.buf.hover()<CR>', opt)
+-- 全局格式化快捷键
+map("n", "<leader>f", "<cmd>lua vim.lsp.buf.format()<CR>", opt)
+-- 光标悬停 n 毫秒后触发 lsp.buf.hover
+vim.o.updatetime = 1000
+vim.api.nvim_create_autocmd('CursorHold', {
+  pattern = '*',
+  callback = function()
+    vim.lsp.buf.hover()
+  end,
+})
+
+map('n', '<leader>p', '<cmd>lua vim.diagnostic.open_float()<CR>', opt)
+map('n', '<C-H>', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opt)
+map('n', '<C-L>', '<cmd>lua vim.diagnostic.goto_next()<CR>', opt)
 

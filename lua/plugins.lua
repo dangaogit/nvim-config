@@ -11,22 +11,27 @@ packer.startup({
     use({ 'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons' } })
     use('arkav/lualine-lsp-progress')
     use({ 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } })
+    use({ 'nvim-treesitter/nvim-treesitter', run = ":TSUpdate"})
+    -- lsp
+    use({ 'williamboman/mason.nvim' })
+    use({ 'williamboman/mason-lspconfig.nvim' })
+    use({ 'neovim/nvim-lspconfig' })
   end,
   config = {
     display = {
-       open_fn = function()
+      open_fn = function()
         return require("packer.util").float({ border = "single" })
-       end,
+      end,
     },
   }
 })
 
 pcall(
-  vim.cmd,
-  [[
-    augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
-    augroup end
-  ]]
+vim.cmd,
+[[
+augroup packer_user_config
+autocmd!
+autocmd BufWritePost plugins.lua source <afile> | PackerSync
+augroup end
+]]
 )
