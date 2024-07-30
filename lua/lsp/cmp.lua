@@ -1,4 +1,9 @@
-local cmp = require('cmp')
+local status, cmp = pcall(require, "cmp")
+if not status then
+    vim.notify("没有找到 cmp")
+  return
+end
+
 
 cmp.setup({
   snippet = {
