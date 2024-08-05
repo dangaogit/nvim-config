@@ -7,9 +7,9 @@ packer.startup({
     -- 主题
     use 'folke/tokyonight.nvim'
     -- 侧边
-    use({ 'kyazdani42/nvim-tree.lua', requires = 'kyazdani42/nvim-web-devicons' })
-    use({ 'akinsho/bufferline.nvim', requires = { 'kyazdani42/nvim-web-devicons', 'moll/vim-bbye' } })
-    use({ 'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons' } })
+    use({ 'nvim-tree/nvim-tree.lua', requires = 'nvim-tree/nvim-web-devicons' })
+    use({ 'akinsho/bufferline.nvim', requires = { 'nvim-tree/nvim-web-devicons', 'moll/vim-bbye' } })
+    use({ 'nvim-lualine/lualine.nvim', requires = { 'nvim-tree/nvim-web-devicons' } })
     use('arkav/lualine-lsp-progress')
     use({ 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } })
     use({ 'nvim-treesitter/nvim-treesitter', run = ":TSUpdate"})
