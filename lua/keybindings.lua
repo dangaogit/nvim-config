@@ -75,30 +75,49 @@ map('n', '<M-F>', ':Telescope live_grep<CR>', opt)
 map('n', 'Ï', ':Telescope live_grep<CR>', opt)
 
 -- lsp keys
-map('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<CR>', opt)
-map('n', '<F18>', '<cmd>lua vim.lsp.buf.rename()<CR>', opt)
-map('n', '<M-.>', '<cmd>lua vim.lsp.buf.code_action()<CR>', opt)
-map('n', '≥', '<cmd>lua vim.lsp.buf.code_action()<CR>', opt)
-map('n', '<D-.>', '<cmd>lua vim.lsp.buf.code_action()<CR>', opt)
-map('n', '<leader>.', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opt)
-map('n', '<leader>b', '<cmd>lua vim.lsp.buf.definition()<CR>', opt)
-map('n', '<leader>B', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opt)
-map('n', '<leader>I', '<cmd>lua vim.lsp.buf.declaration()<CR>', opt)
-map('n', '<leader>i', '<cmd>lua vim.lsp.buf.implementation()<CR>', opt)
-map('n', '<leader>r', '<cmd>lua vim.lsp.buf.references()<CR>', opt)
-map('n', '<leader>?', '<cmd>lua vim.lsp.buf.hover()<CR>', opt)
+-- local command_rename = '<cmd>lua vim.lsp.buf.rename()<CR>'
+local command_rename = '<cmd>Lspsaga rename<CR>'
+map('n', '<F2>', command_rename, opt)
+map('n', '<F18>', command_rename, opt)
+-- local command_code_action = '<cmd>lua vim.lsp.buf.code_action()<CR>'
+local command_code_action = '<cmd>Lspsaga code_action<CR>'
+map('n', '<M-.>', command_code_action, opt)
+map('n', '≥', command_code_action, opt)
+map('n', '<D-.>', command_code_action, opt)
+local command_signature_help = '<cmd>lua vim.lsp.buf.signature_help()<CR>'
+map('n', '<leader>.', command_signature_help, opt)
+-- local command_definition = '<cmd>lua vim.lsp.buf.definition()<CR>'
+local command_definition = '<cmd>Lspsaga preview_definition<CR>'
+map('n', '<leader>b', command_definition, opt)
+local command_type_definition = '<cmd>lua vim.lsp.buf.type_definition()<CR>'
+map('n', '<leader>B', command_type_definition, opt)
+local command_declaration = '<cmd>lua vim.lsp.buf.declaration()<CR>'
+map('n', '<leader>I', command_declaration, opt)
+local command_implementation = '<cmd>lua vim.lsp.buf.implementation()<CR>'
+map('n', '<leader>i', command_implementation, opt)
+-- local command_references = '<cmd>lua vim.lsp.buf.references()<CR>'
+local command_references = '<cmd>Lspsaga finder<CR>'
+map('n', '<leader>r', command_references, opt)
+-- local command_hover = '<cmd>lua vim.lsp.buf.hover()<CR>'
+local command_hover = ':<c-u>Lspsaga hover_doc<CR>'
+map('n', '<leader>?', command_hover, opt)
 -- 全局格式化快捷键
-map("n", "<leader>f", "<cmd>lua vim.lsp.buf.format()<CR>", opt)
+local command_format = '<cmd>lua vim.lsp.buf.format()<CR>'
+map("n", "<leader>f", command_format, opt)
 -- 光标悬停 n 毫秒后触发 lsp.buf.hover
-vim.o.updatetime = 1000
-vim.api.nvim_create_autocmd('CursorHold', {
-  pattern = '*',
-  callback = function()
-    vim.lsp.buf.hover()
-  end,
-})
-
-map('n', '<leader>p', '<cmd>lua vim.diagnostic.open_float()<CR>', opt)
-map('n', '<C-H>', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opt)
-map('n', '<C-L>', '<cmd>lua vim.diagnostic.goto_next()<CR>', opt)
-
+-- vim.o.updatetime = 1000
+-- vim.api.nvim_create_autocmd('CursorHold', {
+--  pattern = '*',
+--  callback = function()
+-- vim.lsp.buf.hover()
+--  end,
+--})
+-- local command_open_float = '<cmd>lua vim.diagnostic.open_float()<CR>'
+local command_open_float = '<cmd>Lspsaga show_line_diagnostics<CR>'
+map('n', '<leader>p', command_open_float, opt)
+-- local command_goto_prev = '<cmd>lua vim.diagnostic.goto_prev()<CR>'
+local command_goto_prev = '<cmd>Lspsaga diagnostic_jump_prev<CR>'
+map('n', '<C-H>', command_goto_prev, opt)
+-- local command_goto_next = '<cmd>lua vim.diagnostic.goto_next()<CR>'
+local command_goto_next = '<cmd>Lspsaga diagnostic_jump_next<CR>'
+map('n', '<C-L>', command_goto_next, opt)

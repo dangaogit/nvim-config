@@ -27,6 +27,8 @@ packer.startup({
     use({ 'hrsh7th/cmp-cmdline' })
     use({ 'rafamadriz/friendly-snippets' })
     use({ 'github/copilot.vim' })
+    use({ 'lukas-reineke/indent-blankline.nvim' })
+    use({ 'nvimdev/lspsaga.nvim' })
   end,
   config = {
     display = {
